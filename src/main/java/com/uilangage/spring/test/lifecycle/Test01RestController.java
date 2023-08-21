@@ -64,8 +64,7 @@ public class Test01RestController {
 	public Board objectResponse(){
 		
 		
-		Board one = new Board ("안녕하세요 가입인사 드립니다.","hagulu","안녕하세요 가입했어요. 앞으로 잘부탁드립니다.");
-		
+		Board one = new Board ("안녕하세요 가입인사 드립니다.","hagulu","안녕하세요 가입했어요. 앞으로 잘부탁드립니다."),;
 		
 		
 		
