@@ -16,19 +16,21 @@ public class Board {
 		this.user = user;
 		this.content = content;
 	}
-	public List<Map<String, Object>> boardmap(){
+//	public boardList
 	
-		List<Map<String, Object>> boardList = new ArrayList<Map<String, Object>>();
-		Map<String, Object> boardMap = new HashMap<String, Object>();
-		boardMap.put("title", title);
-		boardMap.put("user", user);
-		boardMap.put("content", content);
-	
-		boardList.add(boardMap);
-	
-		return boardList;
-	
-	}
+//	public List<Map<String, Object>> boardmap(){
+//	
+//		List<Map<String, Object>> boardList = new ArrayList<Map<String, Object>>();
+//		Map<String, Object> boardMap = new HashMap<String, Object>();
+//		boardMap.put("title", title);
+//		boardMap.put("user", user);
+//		boardMap.put("content", content);
+//	
+//		boardList.add(boardMap);
+//	
+//		return boardList;
+//	
+//	}
 	public String getTitle() {
 		return title;
 	}

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -61,18 +63,29 @@ public class Test01RestController {
 		return movieListMap;
 	}
 	@RequestMapping("/2")
-	public Board objectResponse(){
+	public List<Board> boardList(){
 		
+		List<Board> boardList = new ArrayList<>();
 		
-		Board one = new Board ("안녕하세요 가입인사 드립니다.","hagulu","안녕하세요 가입했어요. 앞으로 잘부탁드립니다."),;
+		Board board = new Board ("안녕하세요 가입인사 드립니다.","hagulu","안녕하세요 가입했어요. 앞으로 잘부탁드립니다.");
+		boardList.add(board);
+		board = new Board ("헐 대박","bada","오늘 목요일이 었어... 금요일인줄");
+		boardList.add(board);
+		board = new Board ("오늘 데이트 한 이야기 해드릴께요.","dulumary","....");
+		boardList.add(board);
 		
-		
-		
-		return one;
+		return boardList;
 		
 		
 	}
-	
+	@RequestMapping("/3")
+	public ResponseEntity<Board> postError(){
+		Board board = new Board ("안녕하세요 가입인사 드립니다.","hagulu","안녕하세요 가입했어요. 앞으로 잘부탁드립니다.");
+		
+		ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		return entity;
+	}
 	
 	
 	
