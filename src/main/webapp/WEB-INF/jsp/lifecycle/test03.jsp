@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ViewResilver jsp 연동</title>
+<title>ViewResolver jsp 연동</title>
 </head>
 <body>
 	<h1>리스트 기억 나시죠?</h1>
