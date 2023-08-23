@@ -12,6 +12,8 @@ public class Store {
 	private String introduce;
 	private Date createdAt;
 	private Date updatedAt;
+	
+	
 	public int getId() {
 		return id;
 	}
