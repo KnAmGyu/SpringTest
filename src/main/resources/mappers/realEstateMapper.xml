@@ -37,7 +37,9 @@
  		FROM	
  			`real_estate`
  		WHERE
- 			<![CDATA[`rentPrice` < #{rentPrice}]]>
+ 			`type` = '월세'
+ 			AND <![CDATA[`rentPrice` < #{rentPrice}]]>
+ 			
  	</select>
  
  	<select id="selectEstateAreaPrice" parameterType="int">
