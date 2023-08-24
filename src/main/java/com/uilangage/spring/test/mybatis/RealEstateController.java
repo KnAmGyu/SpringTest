@@ -12,12 +12,13 @@ import com.uilangage.spring.test.mybatis.domain.RealEstate;
 import com.uilangage.spring.test.mybatis.service.RealEstateService;
 
 @Controller
+@RequestMapping("/mybatis/real-estate")
 public class RealEstateController {
 
 	@Autowired
 	private RealEstateService realEstateService;
 	
-	@RequestMapping("/mybatis/real-estate/1")
+	@RequestMapping("/1")
 	@ResponseBody
 	// localhost:8080/mybatis/real-estate/1?id=3
 	public RealEstate realEstate(@RequestParam("id") int id) {
@@ -26,7 +27,7 @@ public class RealEstateController {
 		return realEstate;
 	}
 	
-	@RequestMapping("/mybatis/real-estate/2")
+	@RequestMapping("/2")
 	@ResponseBody
 	// localhost:8080/mybatis/real-estate/2?rentPrice=90
 	public List<RealEstate> realEstateRent(@RequestParam("rentPrice") int rentPrice) {
@@ -35,7 +36,7 @@ public class RealEstateController {
 		return estateRent;
 	}
 	
-	@RequestMapping("/mybatis/real-estate/3")
+	@RequestMapping("/3")
 	@ResponseBody
 	// localhost:8080/mybatis/real-estate/3?area=90&price=130000
 	public List<RealEstate> realEsateAreaPrice(@RequestParam("area") int area, @RequestParam("price") int price) {
