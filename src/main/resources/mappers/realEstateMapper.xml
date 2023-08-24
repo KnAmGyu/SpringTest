@@ -59,7 +59,11 @@
  		WHERE
  			`area` > #{area}
  		AND	
- 			`price` < #{price}]]>
+ 			`price` < #{price}
+ 		ORDER BY
+ 			`createdAt`
+		DESC	
+ 			]]>
  	
  	</select>
  
