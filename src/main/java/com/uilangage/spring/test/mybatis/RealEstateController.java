@@ -18,32 +18,80 @@ public class RealEstateController {
 	@Autowired
 	private RealEstateService realEstateService;
 	
-	@RequestMapping("/1")
+	@RequestMapping("/select/1")
 	@ResponseBody
-	// localhost:8080/mybatis/real-estate/1?id=3
+	// localhost:8080/mybatis/real-estate/select/1?id=3
 	public RealEstate realEstate(@RequestParam("id") int id) {
 		RealEstate realEstate = realEstateService.getRealEstate(id);
 		
 		return realEstate;
 	}
 	
-	@RequestMapping("/2")
+	@RequestMapping("/select/2")
 	@ResponseBody
-	// localhost:8080/mybatis/real-estate/2?rentPrice=90
+	// localhost:8080/mybatis/real-estate/select/2?rentPrice=90
 	public List<RealEstate> realEstateRent(@RequestParam("rentPrice") int rentPrice) {
 		List<RealEstate> estateRent = realEstateService.getEstateRent(rentPrice);
 		
 		return estateRent;
 	}
 	
-	@RequestMapping("/3")
+	@RequestMapping("/select/3")
 	@ResponseBody
-	// localhost:8080/mybatis/real-estate/3?area=90&price=130000
+	// localhost:8080/mybatis/real-estate/select/3?area=90&price=130000
 	public List<RealEstate> realEsateAreaPrice(@RequestParam("area") int area, @RequestParam("price") int price) {
 		List<RealEstate> estateAreaPrice = realEstateService.getEstateArePrice(area, price);
 		return estateAreaPrice;
 	}
 	
+	@RequestMapping("/insert/1")
+	@ResponseBody
+	public String createRealEstateByObject() {
+//		realtorId : 3
+//		address : 푸르지용 리버 303동 1104호
+//		area : 89
+//		type : 매매
+//		price : 100000
+		RealEstate realEstate = new RealEstate();
+		realEstate.setRealtorId(3);
+		realEstate.setAddress("푸르지용 리버 303동 1104호");
+		realEstate.setArea(89);
+		realEstate.setType("매매");
+		realEstate.setPrice(100000);
+		
+		int count = realEstateService.addRealEstateByObject(realEstate);
+		
+		return "수행결과 : " + count;
+	}
+	
+	@RequestMapping("/insert/2")
+	@ResponseBody
+	// localhost:8080/mybatis/real-estate/insert/2?realtorId=2
+	public String createRealEstate(@RequestParam("realtorId") int realtorId) {
+//		address : 썅떼빌리버 오피스텔 814호
+//		area : 45
+//		type : 월세
+//		price : 100000
+//		rentPrice : 120
+		
+		int count = realEstateService.addRealEstate(realtorId, "썅떼빌리버 오피스텔 814호", 45, "월세", 100000, 120);
+		
+		
+		return "수행결과 : " + count;
+	}
+	
+	@RequestMapping("/update/1")
+	@ResponseBody
+	//localhost:8080/mybatis/real-estate/update/1
+	public String updateRealEstate(){
+//		id가 24 인 행의 type 을 전세로 바꾸고 price 를 70000으로 변경하세요.
+//		수정 성공한 행의 수를 출력하세요.
+		int count = realEstateService.updateRealEstate(24 , "전세", 70000);
+		
+		return "수행결과 : " + count;
+		
+		
+	}
 	
 	
 }

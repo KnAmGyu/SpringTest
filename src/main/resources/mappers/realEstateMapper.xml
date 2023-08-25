@@ -42,7 +42,8 @@
  			
  	</select>
  
- 	<select id="selectEstateAreaPrice" parameterType="int">
+ 	<select id="selectEstateAreaPrice" parameterType="Map" 
+ 	resultType="com.uilangage.spring.test.mybatis.domain.RealEstate">
  		<![CDATA[
  		SELECT
  			`id`
@@ -57,6 +58,8 @@
  		FROM	
  			`real_estate`
  		WHERE
+ 			`type` = '매매'
+ 		AND	
  			`area` > #{area}
  		AND	
  			`price` < #{price}
@@ -67,5 +70,57 @@
  	
  	</select>
  
- 
+ 	<insert id="insertRealEstateByObject" parameterType="com.uilangage.spring.test.mybatis.domain.RealEstate">
+ 		INSERT INTO
+ 			`real_estate`
+ 		(
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 		)	
+ 		VALUE
+ 		(
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 		)
+ 	</insert>
+ 	
+ 	<insert id="insertRealEstate" parameterType="map">
+ 		INSERT INTO
+ 			`real_estate`
+ 		(
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 		)
+ 		VALUE
+ 		(
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 			, #{rentPrice}
+ 		)
+ 	</insert>
+ 	
+ 	<update id="changeRealEstate" parameterType="map">
+ 		UPDATE 
+ 			`real_estate`
+		SET 
+			`type` = #{type}
+			, `price` = #{price}
+			, `updatedAt` = now()
+		WHERE 
+			`id` = #{id};
+ 	
+ 	</update>
  </mapper>
