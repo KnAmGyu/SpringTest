@@ -89,8 +89,16 @@ public class RealEstateController {
 		int count = realEstateService.updateRealEstate(24 , "전세", 70000);
 		
 		return "수행결과 : " + count;
+	}
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	//localhost:8080/mybatis/real-estate/delete?id=21
+	public String deleteRealEstate(@RequestParam("id") int id) {
 		
+		int count  = realEstateService.deleteRealEstate(id);
 		
+		return "삭제결과 : " + count;
 	}
 	
 	
