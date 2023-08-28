@@ -9,9 +9,9 @@
 <body>
 
 <h1>판매자 정보</h1>
-<div><img src=""></div>
-<div>닉네임</div>
-<div>온도</div>
+<div><img src="${result.profileImage}"></div>
+<div>${result.nickName }</div>
+<div>${result.temperature }</div>
 
 </body>
 </html>

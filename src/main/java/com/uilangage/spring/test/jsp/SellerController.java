@@ -2,12 +2,14 @@ package com.uilangage.spring.test.jsp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.uilangage.spring.test.jsp.domain.Seller;
 import com.uilangage.spring.test.jsp.service.SellerService;
 
 @RequestMapping("/jsp/seller")
@@ -33,9 +35,13 @@ public class SellerController {
 		return "jsp/sellerInput";
 	}
 	
-	@GetMapping("last")
-	public String lastSeller() {
+	@GetMapping("/last")
+	public String lastSeller(Model model) {
 		
+		Seller seller = sellerService.getLastSeller();
+		model.addAttribute("result", seller);
+		
+		return "jsp/sellerInfo";
 	}
 	
 	

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="get" action="/jsp/seller/create">	
+	<form method="post" action="/jsp/seller/create">	
 		<h1>판매자 추가</h1>
 		<label>닉네임</label><input type="text" name="nickName"> <br>
 		<label>프로필 사진 url</label><input type="text" name="profileImage"> <br>
