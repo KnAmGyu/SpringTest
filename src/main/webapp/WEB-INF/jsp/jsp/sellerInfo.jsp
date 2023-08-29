@@ -9,7 +9,7 @@
 <body>
 
 <h1>판매자 정보</h1>
-<div><img src="${result.profileImage}"></div>
+<div><img style="width:200px;" src="${result.profileImage}"></div>
 <div>${result.nickName }</div>
 <div>${result.temperature }</div>
 

@@ -44,5 +44,20 @@ public class SellerController {
 		return "jsp/sellerInfo";
 	}
 	
+	@GetMapping("/info")
+	//localhost:8080/jsp/seller/info?id=3
+	public String sellerInfo(@RequestParam(value="id", required=false) Integer id, Model model) {
+		
+		Seller seller = null;
+		//id 파라미터가 있으면, id와 일치하는 판매자 정보
+		if(id != null) {
+			seller = sellerService.getSeller(id);
+		} else {  //id 파라미터가 없으면, 최근 등록된 판매자 정보
+			seller = sellerService.getLastSeller();
+		}
+			model.addAttribute("result", seller);
+		return "jsp/sellerInfo";
+	}
+	
 	
 }

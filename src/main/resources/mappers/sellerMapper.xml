@@ -27,7 +27,7 @@
  		SELECT
  			`id`
  			,`nickName`
- 			, `profileImage
+ 			, `profileImage`
  			, `temperature`
  			, `createdAt`
  			, `updatedAt`
@@ -37,6 +37,22 @@
  			`id` DESC
 		LIMIT 
 			1		
+ 	
+ 	</select>
+ 	
+ 	<select id="selectSeller" parameterType="int"
+ 	resultType="com.uilangage.spring.test.jsp.domain.Seller">
+ 		SELECT
+ 			`id`
+ 			,`nickName`
+ 			, `profileImage`
+ 			, `temperature`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM 
+ 			`seller`	
+ 		WHERE
+ 		 	`id` = #{id}	
  	
  	</select>
  
