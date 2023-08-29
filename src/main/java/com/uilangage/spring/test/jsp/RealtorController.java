@@ -36,9 +36,13 @@ public class RealtorController {
 		
 		int count = realtorService.addRealtorByObject(realtor);
 		
+		model.addAttribute("result", realtor);
+		
 		return "/jsp/realtorInfo";
+		
 	}
 	
+	//localhost:8080/jsp/realtor/insert
 	@GetMapping("/insert")
 	public String inserRealtor() {
 		return "/jsp/realtorInput";
