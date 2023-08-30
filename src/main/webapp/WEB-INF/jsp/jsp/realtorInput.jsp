@@ -11,10 +11,10 @@
 	<div class="container">
 		<form method="post" action="/jsp/realtor/create">
 			<h1>공인중개사 추가</h1>
-			<label>상호명 </label><br><input type="text" class="form-control col-3 name="office"><br>
-			<label>전화번호 </label><br><input type="text" class="form-control col-3 name="phoneNumber"><br>
-			<label>주소 </label><br><input type="text" class="form-control col-3 name="address"><br>
-			<label>등급명 </label><br><input type="text" class="form-control col-3 name="grade"><br>
+			<label>상호명 </label><br><input type="text" class="form-control col-3" name="office"><br>
+			<label>전화번호 </label><br><input type="text" class="form-control col-3" name="phoneNumber"><br>
+			<label>주소 </label><br><input type="text" class="form-control col-3" name="address"><br>
+			<label>등급명 </label><br><input type="text" class="form-control col-3" name="grade"><br>
 			<button type="submit" class="btn btn-primary mt-3"> 추가 </button>
 		</form>	
 	</div>

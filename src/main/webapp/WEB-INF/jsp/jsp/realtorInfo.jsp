@@ -10,7 +10,7 @@
 <body>
 	<div class="container">
 		<h1>공인중개사 정보</h1>
-		<table class="table text-center">
+		<table class="table mt-3">
 			<tbody>
 				<tr>
 					<th>ID</th>
