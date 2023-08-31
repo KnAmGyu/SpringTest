@@ -19,14 +19,60 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="ranking" items="${ranking }" varStatus="status" >
+				<c:forEach var="musicRank" items="${ranking }" varStatus="status" >
 				<tr>
 					<td>${status.count }</td>
-					<td>${ranking }</td>
+					<td>${musicRank }</td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		
+		<h1>멤버십</h1>
+		
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>이름</th>
+					<th>전화번호</th>
+					<th>등급</th>
+					<th>포인트</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="member" items="${memberList }">
+					
+						<tr>
+							<td>${member.name }</td>
+							<td>${member.phoneNumber }</td>
+							<c:choose>
+								<c:when test="${member.grade eq 'VIP'}">
+									<td class="text-danger">${member.grade }</td>
+								</c:when>
+								<c:when test="${member.grade eq 'GOLD'}">
+									<td class="text-warning">${member.grade }</td>
+								</c:when>
+								<c:otherwise>
+									<td>${member.grade }</td>
+								</c:otherwise>
+							</c:choose>	
+							<c:choose>
+								<c:when test="${member.point gt 5000 }">
+									<td class="text-primary">${member.point }P</td>
+								</c:when>
+								<c:otherwise>
+									<td>${member.point }P</td>
+								</c:otherwise>
+							</c:choose>
+							
+						</tr>
+						
+					
+				</c:forEach>
+			</tbody>
+		</table>
+		
 	</div>
 	
 	
