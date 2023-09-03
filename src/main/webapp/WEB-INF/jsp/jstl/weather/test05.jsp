@@ -8,20 +8,17 @@
 <head>
 <meta charset="UTF-8">
 <title>기상청</title>
+<link href="/jstl/css/style.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 	<div class="wrap">
-		<div class="content">
-			<div class="side">
-				<h1>
-					<img src=""> 기상청					
-				</h1>
-				<nav>
-					<
-				</nav>
-			</div>
-			<div>
+		<div class="content-wrap d-flex">
+		
+			<jsp:include page="left-side.jsp"/>
+			
+			<div class="content">
+				<h2>과거날씨</h2>
 				<table class="table text-center">
 					<thead>
 						<tr>
@@ -34,21 +31,37 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="weather" items="${history }" >
+						<fmt:parseDate value="${weather.date }" pattern="yyyy-MM-dd" var="weatherDate" />
 						<tr>
-							<td>2015년 7월 1일</td>
-							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></td>
-							<td>21.9 </td>
-							<td>83.5mm</td>
-							<td>보통</td>
-							<td>2.9 km/h</td>
+							<td><fmt:formatDate value="${weatherDate }" pattern="yyyy년 MM월 dd일" /></td>
+							<c:choose>
+								<c:when test="${(weather.weather ) eq '맑음' }"> 
+									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></td>
+								</c:when>
+								<c:when test="${(weather.weather ) eq '구름조금 ' }"> 
+									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></td>
+								</c:when>
+								<c:when test="${(weather.weather ) eq '흐림  ' }"> 
+									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"></td>
+								</c:when>
+								<c:otherwise>
+									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></td>
+								</c:otherwise>	
+							</c:choose>
+							<td>${weather.temperatures } ℃</td>
+							<td>${weather.precipitation }mm</td>
+							<td>${weather.microDust }</td>
+							<td>${weather.windSpeed } km/h</td>
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<footer>
-			
-		</footer>
+		
+		<jsp:include page="footer.jsp"/>
+		
 	</div>
 	
 

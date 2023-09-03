@@ -5,13 +5,12 @@ import java.util.Date;
 public class Weatherhistory {
 	private String date;
 	private String weather;
-	private double temperature;
+	private double temperatures;
 	private double precipitation;
 	private String microDust;
 	private double windSpeed;
 	private Date createdAt;
 	private Date updatedAt;
-	
 	public String getDate() {
 		return date;
 	}
@@ -24,11 +23,11 @@ public class Weatherhistory {
 	public void setWeather(String weather) {
 		this.weather = weather;
 	}
-	public double getTemperature() {
-		return temperature;
+	public double getTemperatures() {
+		return temperatures;
 	}
-	public void setTemperature(double temperature) {
-		this.temperature = temperature;
+	public void setTemperatures(double temperatures) {
+		this.temperatures = temperatures;
 	}
 	public double getPrecipitation() {
 		return precipitation;
@@ -60,6 +59,8 @@ public class Weatherhistory {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	
 	
 	
 }
