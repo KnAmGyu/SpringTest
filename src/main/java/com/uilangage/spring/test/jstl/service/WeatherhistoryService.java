@@ -18,4 +18,9 @@ public class WeatherhistoryService {
 		List<Weatherhistory> weather = weatherhistoryRepository.getWeatherhistory();
 		return weather;
 	}
+	
+	public int addWeatherhistory(Weatherhistory weatherhistory) {
+		int count = weatherhistoryRepository.insertWeatherhistory(weatherhistory);
+		return count;
+	}
 }

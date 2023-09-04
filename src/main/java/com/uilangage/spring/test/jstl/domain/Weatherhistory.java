@@ -3,7 +3,7 @@ package com.uilangage.spring.test.jstl.domain;
 import java.util.Date;
 
 public class Weatherhistory {
-	private String date;
+	private Date date;
 	private String weather;
 	private double temperatures;
 	private double precipitation;
@@ -11,10 +11,10 @@ public class Weatherhistory {
 	private double windSpeed;
 	private Date createdAt;
 	private Date updatedAt;
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getWeather() {

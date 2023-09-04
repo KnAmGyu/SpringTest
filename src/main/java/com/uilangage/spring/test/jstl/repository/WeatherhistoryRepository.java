@@ -11,4 +11,7 @@ import com.uilangage.spring.test.jstl.domain.Weatherhistory;
 public interface WeatherhistoryRepository {
 
 	public List<Weatherhistory> getWeatherhistory();	
+	
+	public int insertWeatherhistory(Weatherhistory weatherhistory);
+	
 }

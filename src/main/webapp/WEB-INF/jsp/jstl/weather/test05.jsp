@@ -34,19 +34,22 @@
 						<c:forEach var="weather" items="${history }" >
 						<fmt:parseDate value="${weather.date }" pattern="yyyy-MM-dd" var="weatherDate" />
 						<tr>
-							<td><fmt:formatDate value="${weatherDate }" pattern="yyyy년 MM월 dd일" /></td>
+							<td><fmt:formatDate value="${weatherDate }" pattern="yyyy년 M월 d일" /></td>
 							<c:choose>
 								<c:when test="${(weather.weather ) eq '맑음' }"> 
 									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg"></td>
 								</c:when>
-								<c:when test="${(weather.weather ) eq '구름조금 ' }"> 
+								<c:when test="${(weather.weather ) eq '구름조금' }"> 
 									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg"></td>
 								</c:when>
-								<c:when test="${(weather.weather ) eq '흐림  ' }"> 
+								<c:when test="${(weather.weather ) eq '흐림' }"> 
 									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg"></td>
 								</c:when>
-								<c:otherwise>
+								<c:when test="${(weather.weather ) eq '비' }">
 									<td><img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></td>
+								</c:when>
+								<c:otherwise>
+									<td>${weather.weather }</td>
 								</c:otherwise>	
 							</c:choose>
 							<td>${weather.temperatures } ℃</td>

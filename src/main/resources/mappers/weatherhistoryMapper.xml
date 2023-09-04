@@ -17,6 +17,27 @@
  			, `updatedAt`
  		FROM 
  			`weatherhistory`
- 		
  	</select>
+ 	<insert id="insertWeatherhistory"
+ 	parameterType="com.uilangage.spring.test.jstl.domain.Weatherhistory">
+ 		INSERT INTO
+ 			`weatherhistory`
+ 		(
+ 			`date`
+ 			, `weather`
+ 			, `temperatures`
+ 			, `precipitation`
+ 			, `microDust`
+ 			, `windSpeed`
+ 		)
+ 		VALUE
+ 		(
+ 			#{date}
+ 			, #{weather}
+ 			, #{temperatures}
+ 			, #{precipitation}
+ 			, #{microDust}
+ 			, #{windSpeed}
+ 		)	
+ 	</insert>
  </mapper>
