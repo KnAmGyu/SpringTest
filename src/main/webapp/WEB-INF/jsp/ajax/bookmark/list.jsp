@@ -20,11 +20,13 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach var="bookmark" items="${markList }" varStatus="status">
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>				
+					<td>${status.count }</td>
+					<td>${bookmark.name }</td>
+					<td>${bookmark.url }</td>				
 				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>

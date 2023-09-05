@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.uilangage.spring.test.ajax.repository.BookmarkListRepository">
-	<select id="">
-	
+
+	<select id="selectBookmarkList"
+	resultType="com.uilangage.spring.test.ajax.domain.BookmarkList">
+		SELECT
+			`id`
+			, `name`
+			, `url`
+			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`bookmark_list`	
 	</select>
+	
+	<insert id="insertBookmark"  parameterType="map">
+		INSERT INTO
+			`bookmark_list`
+		(
+		 	`name`
+		 	, `url`
+		)
+		VALUE
+		(
+			#{name}
+			, #{url}
+		)
+		
+	</insert>
 
 </mapper>
