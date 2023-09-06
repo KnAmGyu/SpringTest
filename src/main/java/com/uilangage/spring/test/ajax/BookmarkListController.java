@@ -81,7 +81,7 @@ public class BookmarkListController {
 	}
 	
 	@GetMapping("/delete-list")
-	public int deleteList(@RequestParam("id") int id)){
+	public int deleteList(@RequestParam("id") int id){
 		
 		
 		return 0;

@@ -10,14 +10,15 @@
 <body>
 	<div class="container">
 		<h2>즐겨 찾기 추가하기</h2>
-		<div class="input-group mb-3">
-			<label>제목</label><input class="form-control" id="nameInput" type="text">
-		</div>
-		<div class="input-group mb-3">
-			<label>주소</label><input class="form-control" id="urlInput" type="text"><button type="button" id="duplicateBtn">중복확인</button>
-			<div></div>
-		</div>
 		
+		<label>제목</label><input class="form-control" id="nameInput" type="text">
+		<label>주소</label>
+		<div class="input-group">
+			<input class="form-control" id="urlInput" type="text">
+			<button class="btn btn-info" type="button" id="duplicateBtn">중복확인</button>
+		</div>
+		<div id="warnmsg-wrap"><span class="text-danger">중복된 url 입니다.</span></div>
+		<div id="successmsg-wrap"><span class="text-success">사용 가능한 url 입니다.</span></div>		
 		<button type="button" id="addBtn">추가</button>
 	</div>
 	
@@ -25,6 +26,9 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
 	$(document).ready(function(){
+		
+		$("#warnmsg-wrap").hide();
+		$("#successmsg-wrap").hide();
 		
 		$("#duplicateBtn").on("click",function(){
 			let url = $("#urlInput").val();
@@ -41,10 +45,12 @@
 				, success:function(data){
 					if(data.isDuplicate){
 						//중복
-						alert("중복된 url 입니다.");
+						$("#warnmsg-wrap").show();
+						$("#successmsg-wrap").hide();
 					}else{
 						//중복아님
-					 	alert("중복되지 않은 url 입니다.")
+						$("#successmsg-wrap").show();
+						$("#warnmsg-wrap").hide();
 					}
 					
 				}
