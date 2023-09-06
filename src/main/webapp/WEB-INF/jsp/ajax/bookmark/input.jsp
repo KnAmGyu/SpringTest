@@ -14,7 +14,8 @@
 			<label>제목</label><input class="form-control" id="nameInput" type="text">
 		</div>
 		<div class="input-group mb-3">
-			<label>주소</label><input class="form-control" id="urlInput" type="text">
+			<label>주소</label><input class="form-control" id="urlInput" type="text"><button type="button" id="duplicateBtn">중복확인</button>
+			<div></div>
 		</div>
 		
 		<button type="button" id="addBtn">추가</button>
@@ -24,6 +25,37 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
 	$(document).ready(function(){
+		
+		$("#duplicateBtn").on("click",function(){
+			let url = $("#urlInput").val();
+			
+			if(url == ""){
+				alert("경로를 입력하세요");
+				return;
+			}
+			
+			$.ajax({
+				type:"get"
+				, url:"/ajax/bookmark/duplicate-url"
+				, data:{"url": url}
+				, success:function(data){
+					if(data.isDuplicate){
+						//중복
+						alert("중복된 url 입니다.");
+					}else{
+						//중복아님
+					 	alert("중복되지 않은 url 입니다.")
+					}
+					
+				}
+				, error:function(){
+					alert("실행 실패");
+				}
+			});
+			
+		});
+		
+		
 		
 		$("#addBtn").on("click",function(){
 			let name = $("#nameInput").val();
@@ -39,18 +71,25 @@
 				alert("경로를 입력하세요");
 				return;
 			}
-			if((url.substring(0,7) != "http://")){
-				alert("http:// 로 시작해야 합니다");
+			// 주소가 http:// https://로 시작하지 않으면
+			
+		//	if((url.substring(0,7) != "http://")){
+			//	alert("http:// 로 시작해야 합니다");
+				//return;
+		//	}
+			if(!url.startsWith("http://") && !url.startsWith("https://")){
+				alert("주소형식을 확인해주세요");
 				return;
 			}
+			
 			
 			$.ajax({
 				type:"get"
 				, url:"/ajax/bookmark/create"
 				, data:{"name": name, "url": url}
 				, success:function(markData){
-					if(markData == "success"){
-						location.href = "ajax/bookmark/list"
+					if(markData.result == "success"){
+						location.href = "/ajax/bookmark/list";
 					}else{
 						alert("북마크추가실패!");
 					}

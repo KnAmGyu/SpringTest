@@ -56,4 +56,36 @@ public class BookmarkListController {
 	public String bookmarkInput() {
 		return "ajax/bookmark/input";
 	}
+	
+	
+	@GetMapping("/duplicate-url")
+	@ResponseBody
+	public Map<String, Boolean> isDuplicateUrl(@RequestParam("url") String url) {
+		
+//		boolean isDuplicate = bookmarkListService.isDuplicateUrl(url);
+		
+		Map<String, Boolean> duplicateMap = new HashMap<>();
+		
+//		if(isDuplicate){
+//			duplicateMap.put("isDuplicate", true);
+//		}else {
+//			duplicateMap.put("isDuplicate", false);
+//		}
+		if(bookmarkListService.isDuplicateUrl(url)){
+			duplicateMap.put("isDuplicate", true);
+		}else {
+			duplicateMap.put("isDuplicate", false);
+		}
+		
+		return duplicateMap;
+	}
+	
+	@GetMapping("/delete-list")
+	public int deleteList(@RequestParam("id") int id)){
+		
+		
+		return 0;
+	}
+	
+	
 }

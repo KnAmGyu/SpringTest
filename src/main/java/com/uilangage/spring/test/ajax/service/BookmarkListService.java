@@ -27,4 +27,24 @@ public class BookmarkListService {
 		return count;
 	}
 	
+	
+	public boolean isDuplicateUrl(String url) {
+		int count = bookmarkListRepository.selectCountUrl(url);
+		
+//		if(count == 0) {
+//			//중복 안됨
+//			return false;
+//		}else {
+//			//중복됨
+//			return true;
+//		}
+		
+		return count != 0;
+		
+	}
+	
+	public int deleteList(int id) {
+		return 0;
+	}
+	
 }

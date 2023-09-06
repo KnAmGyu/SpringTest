@@ -16,7 +16,7 @@
 				<tr>
 					<th>No.</th>
 					<th>이름</th>
-					<th>주소</th>
+					<th colspan="2">주소</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -24,7 +24,8 @@
 				<tr>
 					<td>${status.count }</td>
 					<td>${bookmark.name }</td>
-					<td>${bookmark.url }</td>				
+					<td>${bookmark.url }</td>
+					<td><button id="deleteBtn" class="btn btn-danger" type="button">삭제</button></td>				
 				</tr>
 				</c:forEach>
 			</tbody>
