@@ -40,9 +40,9 @@ public class BookmarkListController {
 		int count = bookmarkListService.addBookmark(name, url);
 		
 		Map<String, String> resultMap = new HashMap<>();
-		if(count == 1) { // 성공
+		if(count == 1) { 
 			resultMap.put("result", "success");
-		} else { // 실패
+		} else { 
 			resultMap.put("result", "fail");
 		}
 		
