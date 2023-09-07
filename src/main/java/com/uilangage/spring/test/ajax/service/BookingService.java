@@ -1,5 +1,6 @@
 package com.uilangage.spring.test.ajax.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +22,24 @@ public class BookingService {
 		return bookingList;
 		
 	}
+	
+	public int deleteList(int id) {
+		int count = bookingRepository.deleteBooking(id);
+		
+		return count;
+		
+	}
+	
+	public int addBooking(
+			String name
+			, int headCount
+			, int day
+			, Date date
+			, String phoneNumber) {
+		int count = bookingRepository.insertBookingList(name, headCount, day, date, phoneNumber);
+		return count;
+	}
+	
+	
+	
 }
