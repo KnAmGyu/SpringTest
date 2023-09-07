@@ -17,8 +17,8 @@
 			<input class="form-control" id="urlInput" type="text">
 			<button class="btn btn-info" type="button" id="duplicateBtn">중복확인</button>
 		</div>
-		<div id="warnmsg-wrap"><span class="text-danger">중복된 url 입니다.</span></div>
-		<div id="successmsg-wrap"><span class="text-success">사용 가능한 url 입니다.</span></div>		
+		<div id="warnmsgWrap"><span class="text-danger">중복된 url 입니다.</span></div>
+		<div id="successmsgWrap"><span class="text-success">사용 가능한 url 입니다.</span></div>		
 		<button type="button" id="addBtn">추가</button>
 	</div>
 	
@@ -27,8 +27,24 @@
 <script>
 	$(document).ready(function(){
 		
-		$("#warnmsg-wrap").hide();
-		$("#successmsg-wrap").hide();
+		$("#warnmsgWrap").hide();
+		$("#successmsgWrap").hide();
+		
+		// 중복 체크 확인
+		var isDuplicateCheck = false;
+		
+		// 중복상태
+		var isDuplicateUrl = true;
+		
+		
+		$("#urlInput").on("input", function(){
+			//중복체크 확인, 중복상태 변수값을 초기화. 
+			isDuplicateCheck = false;
+			isDuplicateUrl = true;
+			$("#warnmsgWrap").hide();
+			$("#successmsgWrap").hide();
+		});
+		
 		
 		$("#duplicateBtn").on("click",function(){
 			let url = $("#urlInput").val();
@@ -43,14 +59,17 @@
 				, url:"/ajax/bookmark/duplicate-url"
 				, data:{"url": url}
 				, success:function(data){
+					isDuplicateCheck = true;
 					if(data.isDuplicate){
 						//중복
-						$("#warnmsg-wrap").show();
-						$("#successmsg-wrap").hide();
+						isDuplicateUrl = true;
+						$("#warnmsgWrap").show();
+						$("#successmsgWrap").hide();
 					}else{
 						//중복아님
-						$("#successmsg-wrap").show();
-						$("#warnmsg-wrap").hide();
+						isDuplicateUrl = false;
+						$("#successmsgWrap").show();
+						$("#warnmsgWrap").hide();
 					}
 					
 				}
@@ -60,6 +79,7 @@
 			});
 			
 		});
+	
 		
 		
 		
@@ -87,6 +107,23 @@
 				alert("주소형식을 확인해주세요");
 				return;
 			}
+			
+			
+			// 중복확인 안된 상태
+			
+			if(!isDuplicateCheck){
+				alert("url 중복체크를 해주세요");
+				return;
+				
+			}
+			
+			// 중복된 url 일때
+			
+			if(isDuplicateUrl){
+				alert("중복된 url 입니다.");
+				return;
+			}
+			
 			
 			
 			$.ajax({

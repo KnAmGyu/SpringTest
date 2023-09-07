@@ -1,0 +1,34 @@
+@charset "UTF-8";
+@charset "UTF-8";
+h1,h2,h3,h4,h5,h6,ul,li,dl,ol,table,td,tr,th,div,p,a{padding:0; margin:0; text-decoration: none;}
+a:hover{ text-decoration:none; }
+ul,li,dl,ol{ list-style:none; }
+#wrap{ margin:0 auto; width:1200px; }
+.logo{ padding:25px 0; font-size: 42px; font-weight:400; text-align:center;}
+.logo a{ color:#000; }
+nav{ height:48px; background-color: #ff8420; }
+nav ul{ width:100%; }
+nav ul li{ width:25%; }
+nav ul li a{ padding:12px 0; display:inline-block; width:100%; text-align:center; color:#fff; font-weight: bold; }
+nav ul li a:hover{ background-color:#ffa75f; }
+.contents{ color:#fff; }
+.leftSection{ width:30%; padding:46px 0 116px 80px;  background-color: #a84a32; }
+.leftSection p{ font-size: 50px; font-weight: 400; }
+.rightSection{ width: 25%; padding:52px 0 116px 60px; background-color: #a84a32;  }
+.rightSection p{ font-size: 32px; }
+.reserveConfirm{ padding:20px 60px 0 22px; width:45%; background-color:#e38629; }
+.reserveConfirm h2{ font-size:28px; font-weight: bold; }
+.reserveConfirm h2 + .inputWrap{ padding-top: 10px; margin-left:16px; }
+.reserveConfirm h2 + .inputWrap label + label{ margin-left: 6px; }
+.reserveConfirm .con{ margin-top:16px; }
+.con .inputWrap{ width:100%; padding:0 10px }
+.con .inputWrap + .inputWrap{ margin-top: 14px; }
+.con .inputWrap label{ width:20%; text-align: center; }
+.con .inputWrap input{ width:80%; height:42px; border-radius: 4px; border: 1px solid #ddd; }
+.btnWrap{ margin-top: 14px; text-align: right; }
+.btnWrap .checkBtn{ padding:0 12px; height:36px; font-size: 14px; border:none; border-radius:4px; background-color:green; color:#fff; }
+
+footer{ padding:30px 0; }
+footer .copyright{ padding-left: 30px; font-size:14px; color:#929292; }
+
+.hide{ display:none; }

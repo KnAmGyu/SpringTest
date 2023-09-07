@@ -25,7 +25,7 @@
 					<td>${status.count }</td>
 					<td>${bookmark.name }</td>
 					<td>${bookmark.url }</td>
-					<td><button id="deleteBtn" class="btn btn-danger" type="button">삭제</button></td>				
+					<td><button class="delete-btn btn btn-danger btn-sm" data-bookmark-id="${bookmark.id }" type="button">삭제</button></td>				
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -35,7 +35,29 @@
 <script>
 
 	$(document).ready(function(){
-		$("#deleteBtn").on("click", function(){
+		$(".delete-btn").on("click", function(){
+			
+			let id = $(this).data("bookmark-id");
+									
+			$.ajax({
+				type:"get"
+				, url:"/ajax/bookmark/delete"
+				, data:{"id":id}
+				, success:function(data){
+					
+					// 성공 : {"result":"success"}
+					// 실패 : {"result":"fail"}
+					if(data.result == "success"){
+						location.reload();
+					} else{
+						alert("삭제 실패");
+					}
+				}
+				, error:function(){
+					alert("삭제에러");
+				}
+			});
+			
 			
 		});
 		

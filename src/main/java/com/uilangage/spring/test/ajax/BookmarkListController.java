@@ -80,11 +80,25 @@ public class BookmarkListController {
 		return duplicateMap;
 	}
 	
-	@GetMapping("/delete-list")
-	public int deleteList(@RequestParam("id") int id){
+	@GetMapping("/delete")
+	@ResponseBody
+	public Map<String, String> deleteList(@RequestParam("id") int id){
+		int count = bookmarkListService.deleteList(id);
 		
+		// 성공 : {"result":"success"}
+		// 실패 : {"result":"fail"}
 		
-		return 0;
+		Map<String, String> resultMap = new HashMap<>();
+		
+		if(count == 1) {
+			//성공
+			resultMap.put("result","success");
+		}else {
+			//실패
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
 	}
 	
 	

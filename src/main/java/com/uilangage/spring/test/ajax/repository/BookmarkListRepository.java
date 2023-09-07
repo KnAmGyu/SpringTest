@@ -17,5 +17,7 @@ public interface BookmarkListRepository {
 	
 	public int selectCountUrl(@Param("url") String url);
 	
+	public int deleteBookmark(@Param("id") int id);
+	
 	
 }
