@@ -94,7 +94,7 @@ public class BookingController {
 		Booking booking = bookingService.findBookingList(name, phoneNumber);
 		
 		// 응답 json에 조회된 데이터가 있는지 없는지 정보를 명확하게 정의 한다.
-		
+		// 성공실패여부와 비슷함
 		
 		// {"name": "", "date": "", "day": } 
 		
