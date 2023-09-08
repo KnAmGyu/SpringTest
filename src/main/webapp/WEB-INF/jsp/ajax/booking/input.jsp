@@ -64,8 +64,20 @@
 				alert("숙박일수를 입력하세요");
 				return;
 			}
+			
+			// day 가 숫자가 아닌경우
+			// NaN = Not a Number
+			if(isNaN(day)){
+				alert("숙박일수는 숫자만 입력가능합니다.")
+				return;
+			}	
+			
 			if(headCount == ""){
 				alert("인원수를 입력하세요");
+				return;
+			}
+			if(isNaN(headCount)){
+				alert("인원수는 숫자만 입력가능합니다.");
 				return;
 			}
 			if(phoneNumber == ""){

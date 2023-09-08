@@ -17,8 +17,14 @@ public interface BookingRepository {
 	
 	public int insertBookingList(
 			@Param("name") String name
-			, @Param("headCount") int headCount
-			, @Param("day") int day
 			, @Param("date") Date date
+			, @Param("day") int day
+			, @Param("headCount") int headCount
+			, @Param("phoneNumber") String phoneNumber
+			, @Param("state") String state);
+	
+	public Booking findBookingList(
+			@Param("name") String name
 			, @Param("phoneNumber") String phoneNumber);
+	
 }

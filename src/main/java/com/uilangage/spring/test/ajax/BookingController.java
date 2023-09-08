@@ -65,16 +65,17 @@ public class BookingController {
 	@ResponseBody
 	public Map<String, String> createBookingList(
 			@RequestParam("name") String name
-			,@RequestParam("headCount") int headCount
-			,@RequestParam("day") int day
 			,@DateTimeFormat(pattern="yyyy년MM월dd일")  @RequestParam("date") Date date
+			,@RequestParam("day") int day
+			,@RequestParam("headCount") int headCount
 			,@RequestParam("phoneNumber") String phoneNumber) {
-		int count = bookingService.addBooking(name, headCount, day, date, phoneNumber);
+		
+		int count = bookingService.addBooking(name, date, day, headCount, phoneNumber);
 		
 		
 		Map<String, String> resultMap = new HashMap<>();
 		
-		if(count ==1) {
+		if(count == 1) {
 			resultMap.put("result", "success");
 		}else {
 			resultMap.put("result", "fail");
@@ -82,5 +83,26 @@ public class BookingController {
 		return resultMap;
 	}
 	
+	// 이름과 전화번호를 전달 받고,
+	// 일치하는 예약정보를 response에 json으로 담아주는 API
+	@GetMapping("/find")
+	@ResponseBody
+	public Booking findBooking(
+			@RequestParam("name") String name
+			, @RequestParam("phoneNumber") String phoneNumber){
+		
+		Booking booking = bookingService.findBookingList(name, phoneNumber);
+		
+		// 응답 json에 조회된 데이터가 있는지 없는지 정보를 명확하게 정의 한다.
+		
+		
+		// {"name": "", "date": "", "day": }
+		
+		
+		
+		return booking;
+	
+		
+	}
 	
 }

@@ -32,12 +32,17 @@ public class BookingService {
 	
 	public int addBooking(
 			String name
-			, int headCount
-			, int day
 			, Date date
+			, int day
+			, int headCount
 			, String phoneNumber) {
-		int count = bookingRepository.insertBookingList(name, headCount, day, date, phoneNumber);
+		int count = bookingRepository.insertBookingList(name, date, day, headCount, phoneNumber,"대기중");
 		return count;
+	}
+	
+	public Booking findBookingList(String name, String phoneNumber) {
+		Booking booking = bookingRepository.findBookingList(name, phoneNumber);
+		return booking;
 	}
 	
 	

@@ -44,8 +44,29 @@
  			, #{day}
  			, #{date}
  			, #{phoneNumber}
- 			, '대기중'
+ 			, #{state}
  		)	
  	</insert>
+ 	<select id="findBookingList" parameterType="map" 
+ 	resultType="com.uilangage.spring.test.ajax.domain.Booking">
+ 		SELECT
+ 			`id`
+ 			, `name`
+ 			, `headCount`
+ 			, `day`
+ 			, `date`
+ 			, `phoneNumber`
+ 			, `state`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`booking`			
+ 		WHERE
+ 			`name` = #{name}
+ 		AND
+ 			`phoneNumber` = #{phoneNumber}	
+ 	</select>
+ 	
+ 	
  	
  </mapper>
