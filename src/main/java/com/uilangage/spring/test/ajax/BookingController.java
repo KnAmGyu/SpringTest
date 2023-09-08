@@ -96,7 +96,7 @@ public class BookingController {
 		// 응답 json에 조회된 데이터가 있는지 없는지 정보를 명확하게 정의 한다.
 		
 		
-		// {"name": "", "date": "", "day": }
+		// {"name": "", "date": "", "day": } 
 		
 		
 		
