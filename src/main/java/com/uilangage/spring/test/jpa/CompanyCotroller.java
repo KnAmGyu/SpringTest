@@ -1,5 +1,8 @@
 package com.uilangage.spring.test.jpa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,48 +20,54 @@ public class CompanyCotroller {
 	@Autowired
 	private CompanyService companyService;
 
-	@GetMapping("/create/1")
+	@GetMapping("/create")
 	@ResponseBody
-	public Company createCompany() {
+	public List<Company> createCompany() {
 		
 //		회사명 : 넥손
 //		사업내용 : 컨텐츠 게임
 //		규모 : 대기업
 //		사원수 : 3585명
-		String name = "넥손";
-		String business = "컨텐츠 게임";
-		String scale = "대기업";
-		int headcount = 3585;
+//		String name = "넥손";
+//		String business = "컨텐츠 게임";
+//		String scale = "대기업";
+//		int headcount = 3585;
 		
-
+		List<Company> companyList = new ArrayList<>();
 		
-		Company company = companyService.addCompany(name, business, scale, headcount);
+		Company company = companyService.addCompany("넥손", "컨텐츠 게임", "대기업", 3585);
+		companyList.add(company);
 		
-		return company;
+		company = companyService.addCompany("버블팡", "여신 금융업", "대기업", 6834);
+		companyList.add(company);
+		
+		
+		
+		return companyList;
 	}
 	
-	@GetMapping("/create/2")
-	@ResponseBody
-	public Company createCompany2() {
-		
-//		회사명 : 버블팡
-//		사업내용 : 여신 금융업
-//		규모 : 대기업
-//		사원수 : 6834명
-		
-		String name = "버블팡";
-		String business = "여신 금융업";
-		String scale = "대기업";
-		int headcount = 6834;
-		
-
-		
-		Company company = companyService.addCompany(name, business, scale, headcount);
-		
-		return company;
-		
-	}
-	
+//	@GetMapping("/create/2")
+//	@ResponseBody
+//	public Company createCompany2() {
+//		
+////		회사명 : 버블팡
+////		사업내용 : 여신 금융업
+////		규모 : 대기업
+////		사원수 : 6834명
+//		
+//		String name = "버블팡";
+//		String business = "여신 금융업";
+//		String scale = "대기업";
+//		int headcount = 6834;
+//		
+//
+//		
+//		Company company = companyService.addCompany(name, business, scale, headcount);
+//		
+//		return company;
+//		
+//	}
+//	
 	@GetMapping("/update")
 	@ResponseBody
 	public Company updateCompany(){

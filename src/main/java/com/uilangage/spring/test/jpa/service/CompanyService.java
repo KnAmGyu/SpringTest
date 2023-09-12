@@ -54,9 +54,11 @@ public class CompanyService {
 //			companyRepository.delete(company);
 //		}
 		
-		Optional<Company> optionalCompany = companyRepository.findById(id);
+//		Optional<Company> optionalCompany = companyRepository.findById(id);
+//		
+//		optionalCompany.ifPresent(company -> companyRepository.delete(company));
 		
-		optionalCompany.ifPresent(company -> companyRepository.delete(company));
+		companyRepository.findById(id).ifPresent(company -> companyRepository.delete(company));
 		
 		
 	}
