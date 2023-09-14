@@ -77,14 +77,14 @@
 				, url:"/ajax/booking/find"
 				, data:{"name":name, "phoneNumber":phoneNumber}
 				, success:function(data){
-					if(data == ""){
+					if(data == "fail"){
 						alert("조회결과가 없습니다.");						
 					}else{
-						alert("이름 : " + data.name + "\n"
-								+ "날짜 : " + data.date.substring(0, 10) + "\n"
-								+ "숙박일수 : " + data.day + "\n"
-								+ "인원 : " + data.headCount + "\n"
-								+ "상태 : " + data.state);
+						alert("이름 : " + data.booking.name + "\n"
+								+ "날짜 : " + data.booking.date.substring(0, 10) + "\n"
+								+ "숙박일수 : " + data.booking.day + "\n"
+								+ "인원 : " + data.booking.headCount + "\n"
+								+ "상태 : " + data.booking.state);
 					}
 				}	
 				, error:function(){

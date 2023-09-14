@@ -87,7 +87,7 @@ public class BookingController {
 	// 일치하는 예약정보를 response에 json으로 담아주는 API
 	@GetMapping("/find")
 	@ResponseBody
-	public Booking findBooking(
+	public Map<String, Object> findBooking(
 			@RequestParam("name") String name
 			, @RequestParam("phoneNumber") String phoneNumber){
 		
@@ -98,9 +98,17 @@ public class BookingController {
 		
 		// {"name": "", "date": "", "day": } 
 		
+		Map<String, Object> resultMap = new HashMap<>();
+		
+		if(booking != null) {
+			resultMap.put("result", "success");
+			resultMap.put("booknig", booking);
+		} else {
+			resultMap.put("result", "fail");
+		}
 		
 		
-		return booking;
+		return resultMap;
 	
 		
 	}
